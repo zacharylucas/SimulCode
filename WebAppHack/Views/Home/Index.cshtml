@@ -8,7 +8,7 @@
         <textarea id="text_area_1"></textarea>
         <textarea id="text_area_2"></textarea>
         <button id="auth_button">Authorize</button>
-        <button id="comp_button">Compile</button>
+        <button id="comp_button" data-url="@Url.Action("Compile", "TextAreaController")">Compile</button>
     </main>
     <script>
         var clientId = '121914383346-1e502931b3sikmtc84e7vricjdc87ldf.apps.googleusercontent.com';
@@ -26,7 +26,7 @@
       compButton.onclick = function () {
           var docData = $("#text_area_1").val();
           $.ajax({
-              url: "~/Controllers/TextAreaControllers/Compile",
+              url: '/TextArea/Compile',
               type: 'POST',
               data: { docDataIn: docData },
               success: function (result) {

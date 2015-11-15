@@ -8,6 +8,7 @@
         <textarea id="text_area_1"></textarea>
         <textarea id="text_area_2"></textarea>
         <button id="auth_button">Authorize</button>
+        <button id="comp_button">Compile</button>
     </main>
     <script>
         var clientId = '121914383346-1e502931b3sikmtc84e7vricjdc87ldf.apps.googleusercontent.com';
@@ -19,6 +20,26 @@
       var realtimeUtils = new utils.RealtimeUtils({ clientId: clientId });
 
       authorize();
+
+      var compButton = document.getElementById('comp_button');
+      compButton.classList.add('Visible');
+      $(function () {
+          $("#comp_button").click(function () {
+              var docData = $("#text_area_1").val();
+              $.ajax({
+                  url: "Compile",
+                  type: 'POST',
+                  data: { docDataIn: docData },
+                  success: function (result) {
+                      $("#text_area_2").val(result.compiled);
+                  },
+
+                  error: function () {
+                      alert("Something didn't quite work :(");
+                  }
+              });
+          });
+      });
 
       function authorize() {
         // Attempt to authorize

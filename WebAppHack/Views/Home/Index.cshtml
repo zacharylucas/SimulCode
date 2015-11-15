@@ -70,7 +70,6 @@
           realtimeUtils.createRealtimeFile('New Quickstart File', function(createResponse) {
             window.history.pushState(null, null, '?id=' + createResponse.id);
             realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
-            createResponse.update(createResponse.id, "anyone").execute();
           });
         }
       }

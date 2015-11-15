@@ -56,6 +56,23 @@ textarea {
     height: 100px;
 }
 
-.comp_butt {
 
+.comp_butt {
+  background-color: #FF4500;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.comp_butt:hover {
+  background-color: #ffa64d;
+}
+
+.shar_butt {
+  background-color: #FF4500;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.shar_butt:hover {
+  background-color: #ffa64d;
 }

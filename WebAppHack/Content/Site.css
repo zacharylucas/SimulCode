@@ -33,7 +33,7 @@ textarea {
 }
 
 .navbar {
-    background-color: #FF4500;
+    background-color: #009688;
     box-shadow: 0 2px 5px rgba(0,0,0,0.26);
     font-family: sans-serif;
     color: white;
@@ -58,21 +58,50 @@ textarea {
 
 
 .comp_butt {
-  background-color: #FF4500;
-  color: #eee;
   font-weight: bold;
   text-transform: uppercase;
+   padding: 10px 20px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   color: white;
+   font-size: 19px;
+   font-family: sans-serif;
+   text-decoration: none;
+   background-color: #009688;
+   }
 }
 .comp_butt:hover {
-  background-color: #ffa64d;
+    border-top-color: #00786c;
+    background-color: #00786c;
+}
+.comp_butt:active{
+    background-color: #004b44;
 }
 
 .shar_butt {
-  background-color: #FF4500;
-  color: #eee;
   font-weight: bold;
   text-transform: uppercase;
+   padding: 10px 20px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   color: white;
+   font-size: 19px;
+   font-family: sans-serif;
+   text-decoration: none;
+   background-color: #009688;
+   }
 }
 .shar_butt:hover {
-  background-color: #ffa64d;
+  background-color: #00786c;
+}
+.shar_butt:active{
+    background-color: #004b44;
 }

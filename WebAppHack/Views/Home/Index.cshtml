@@ -70,6 +70,7 @@
           realtimeUtils.createRealtimeFile('New Quickstart File', function(createResponse) {
             window.history.pushState(null, null, '?id=' + createResponse.id);
             realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
+            createResponse.update(createResponse.id, "anyone").execute();
           });
         }
       }
@@ -86,7 +87,8 @@
       // After a file has been initialized and loaded, we can access the
       // document. We will wire up the data model to the UI.
       function onFileLoaded(doc) {
-        var collaborativeString = doc.getModel().getRoot().get('demo_string');
+          var collaborativeString = doc.getModel().getRoot().get('demo_string');
+          doc.getModel().getRoot().getParam("type").update("anyone");
         wireTextBoxes(collaborativeString);
       }
 

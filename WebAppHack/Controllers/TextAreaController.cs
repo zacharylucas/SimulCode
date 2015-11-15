@@ -6,9 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebAppHack
+namespace WebAppHack.Controllers
 {
-    public class HomeController : Controller
+    public class TextAreaController : Controller
     {
         //
         // GET: /Home/

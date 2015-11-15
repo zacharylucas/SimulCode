@@ -60,8 +60,8 @@ namespace WebAppHack
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             { 
-                ClientId = "959492444366-m235a8irtsi2musug4euohi0gspnsjja.apps.googleusercontent.com",
-                ClientSecret = "ptSIgy-hyVoYKXZF7Plvv41F"
+                ClientId = "577835925539-9uifqf54g6q1q7403bmidmd61cp0uv1d.apps.googleusercontent.com",
+                ClientSecret = "tJ_kH70SEAtU3Uua6JTA4h71"
             });
         }
     }

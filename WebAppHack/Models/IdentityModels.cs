@@ -29,5 +29,7 @@ namespace WebAppHack.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WebAppHack.Models.Contact> Contacts { get; set; }
     }
 }

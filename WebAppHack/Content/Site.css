@@ -1,6 +1,15 @@
-﻿body {
+﻿html {
+    background-color: #2c3338;
+    font-family: sans-serif;
+    color: white;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #2c3338;
+    font-family: sans-serif;
+    color: white;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +30,22 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar {
+    background-color: #FF4500;
+    box-shadow: 0px 4px 4px black;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;   
+}
+
+textarea {
+    outline:2px;
+    outline-color: black;
+    box-shadow: 0px 4px 4px black;
+    overflow: auto;
+    resize: none;
+    width: 1000px;
+    height: 400px;
 }

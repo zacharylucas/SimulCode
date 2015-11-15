@@ -58,11 +58,11 @@ namespace WebAppHack
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            { 
+                ClientId = "959492444366-m235a8irtsi2musug4euohi0gspnsjja.apps.googleusercontent.com",
+                ClientSecret = "ptSIgy-hyVoYKXZF7Plvv41F"
+            });
         }
     }
 }

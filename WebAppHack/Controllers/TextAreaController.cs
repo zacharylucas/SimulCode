@@ -20,6 +20,7 @@ namespace WebAppHack.Controllers
         [HttpPost]
         public JsonResult Compile(string docDataIn)
         {
+            Console.WriteLine("YOU ARE IN THE FUNCTION THING");
             string targetFile = @"C:\CompileTesting\ctests2.cs";
             System.IO.File.WriteAllText(targetFile, docDataIn);
 

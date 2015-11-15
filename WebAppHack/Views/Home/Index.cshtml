@@ -1,31 +1,80 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+﻿<div>
+    <main>
+        <h1>Realtime Collaboration Quickstart</h1>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Now that your application is running, simply type in either text box and see your changes instantly appear in the other one. Open
+            this same document in a <a onclick="window.open(window.location.href);return false;" target="_blank">new tab</a> to see it work across tabs.
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+        <textarea id="text_area_1"></textarea>
+        <textarea id="text_area_2"></textarea>
+        <button id="auth_button">Authorize</button>
+    </main>
+    <script>
+        var clientId = '121914383346-1e502931b3sikmtc84e7vricjdc87ldf.apps.googleusercontent.com';
+
+      if (!/^([0-9])$/.test(clientId[0])) {
+        alert('Invalid Client ID - did you forget to insert your application Client ID?');
+      }
+      // Create a new instance of the realtime utility with your client ID.
+      var realtimeUtils = new utils.RealtimeUtils({ clientId: clientId });
+
+      authorize();
+
+      function authorize() {
+        // Attempt to authorize
+        realtimeUtils.authorize(function(response){
+          if(response.error){
+            // Authorization failed because this is the first time the user has used your application,
+            // show the authorize button to prompt them to authorize manually.
+            var button = document.getElementById('auth_button');
+            button.classList.add('visible');
+            button.addEventListener('click', function () {
+              realtimeUtils.authorize(function(response){
+                start();
+              }, true);
+            });
+          } else {
+              start();
+          }
+        }, false);
+      }
+
+      function start() {
+        // With auth taken care of, load a file, or create one if there
+        // is not an id in the URL.
+        var id = realtimeUtils.getParam('id');
+        if (id) {
+          // Load the document id from the URL
+          realtimeUtils.load(id.replace('/', ''), onFileLoaded, onFileInitialize);
+        } else {
+          // Create a new document, add it to the URL
+          realtimeUtils.createRealtimeFile('New Quickstart File', function(createResponse) {
+            window.history.pushState(null, null, '?id=' + createResponse.id);
+            realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
+          });
+        }
+      }
+
+      // The first time a file is opened, it must be initialized with the
+      // document structure. This function will add a collaborative string
+      // to our model at the root.
+      function onFileInitialize(model) {
+        var string = model.createString();
+        string.setText('Welcome to the Quickstart App!');
+        model.getRoot().set('demo_string', string);
+      }
+
+      // After a file has been initialized and loaded, we can access the
+      // document. We will wire up the data model to the UI.
+      function onFileLoaded(doc) {
+        var collaborativeString = doc.getModel().getRoot().get('demo_string');
+        wireTextBoxes(collaborativeString);
+      }
+
+      // Connects the text boxes to the collaborative string
+      function wireTextBoxes(collaborativeString) {
+        var textArea1 = document.getElementById('text_area_1');
+        gapi.drive.realtime.databinding.bindString(collaborativeString, textArea1);
+      }
+    </script>
 </div>
